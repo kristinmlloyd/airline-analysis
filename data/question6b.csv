@@ -1,0 +1,280 @@
+airport_name,cancellation_reason,num_cancellations
+"New York, NY: LaGuardia","National Air System""D",394
+"Chicago, IL: O'Hare International","National Air System""D",287
+"Newark, NJ: Newark Liberty International","National Air System""D",272
+"Dallas/Fort Worth, TX: Dallas/Fort Worth International","Carrier""B",233
+"New York, NY: John F. Kennedy International","National Air System""D",211
+"Los Angeles, CA: Los Angeles International","Carrier""B",148
+"Washington, DC: Ronald Reagan Washington National","National Air System""D",137
+"Phoenix, AZ: Phoenix Sky Harbor International","Carrier""B",112
+"Charlotte, NC: Charlotte Douglas International","National Air System""D",106
+"San Francisco, CA: San Francisco International","Carrier""B",104
+"Las Vegas, NV: McCarran International","Carrier""B",98
+"Philadelphia, PA: Philadelphia International","National Air System""D",93
+"Baltimore, MD: Baltimore/Washington International","National Air System""D",91
+"Boston, MA: Logan International","National Air System""D",87
+"Atlanta, GA: Hartsfield-Jackson Atlanta International","Carrier""B",70
+"Raleigh/Durham, NC: Raleigh-Durham International","National Air System""D",70
+"Burbank, CA: Hollywood Burbank","Carrier""B",65
+"Cleveland, OH: Cleveland Hopkins International","National Air System""D",62
+"San Diego, CA: San Diego International","Carrier""B",58
+"San Jose, CA: Norman Y. Mineta San Jose International","Carrier""B",58
+"Denver, CO: Denver International","Carrier""B",56
+"Oakland, CA: Metropolitan Oakland International","Carrier""B",56
+"Columbus, OH: John Glenn Columbus International","National Air System""D",55
+"Nashville, TN: Nashville International","National Air System""D",55
+"Seattle, WA: Seattle/Tacoma International","Carrier""B",51
+"Cincinnati, OH: Cincinnati/Northern Kentucky International","National Air System""D",50
+"Orlando, FL: Orlando International","Carrier""B",50
+"Detroit, MI: Detroit Metro Wayne County","National Air System""D",47
+"Miami, FL: Miami International","Carrier""B",46
+"Washington, DC: Washington Dulles International","Carrier""B",46
+"Indianapolis, IN: Indianapolis International","National Air System""D",45
+"Norfolk, VA: Norfolk International","National Air System""D",45
+"Houston, TX: George Bush Intercontinental","Carrier""B",44
+"Houston, TX: William P. Hobby","Carrier""B",41
+"Sacramento, CA: Sacramento International","Carrier""B",40
+"St. Louis, MO: St. Louis Lambert International","National Air System""D",40
+"Dallas, TX: Dallas Love Field","Carrier""B",35
+"Pittsburgh, PA: Pittsburgh International","National Air System""D",34
+"Richmond, VA: Richmond International","National Air System""D",32
+"Buffalo, NY: Buffalo Niagara International","National Air System""D",31
+"Rochester, NY: Greater Rochester International","National Air System""D",31
+"Austin, TX: Austin-Bergstrom International","Carrier""B",28
+"Fort Lauderdale, FL: Fort Lauderdale-Hollywood International","Carrier""B",28
+"New Orleans, LA: Louis Armstrong New Orleans International","Carrier""B",27
+"Jacksonville, FL: Jacksonville International","National Air System""D",26
+"Portland, ME: Portland International Jetport","National Air System""D",26
+"Memphis, TN: Memphis International","National Air System""D",25
+"Tampa, FL: Tampa International","Carrier""B",25
+"Greer, SC: Greenville-Spartanburg International","National Air System""D",24
+"Louisville, KY: Louisville International","National Air System""D",24
+"Santa Ana, CA: John Wayne Airport","Carrier""B",24
+"Kansas City, MO: Kansas City International","National Air System""D",23
+"Minneapolis, MN: Minneapolis-St Paul International","National Air System""D",23
+"Chicago, IL: Midway International","National Air System""D",22
+"Birmingham, AL: Birmingham-Shuttlesworth International","Carrier""B",18
+"Burlington, VT: Burlington International","National Air System""D",18
+"Honolulu, HI: Daniel K. Inouye International","Carrier""B",18
+"Providence, RI: Theodore Francis Green State","National Air System""D",18
+"Greensboro, NC: Piedmont Triad International","National Air System""D",17
+"Santa Barbara, CA: Santa Barbara Municipal","National Air System""D",17
+"Charleston, SC: Charleston International","National Air System""D",16
+"Knoxville, TN: McGhee Tyson","National Air System""D",16
+"Dayton, OH: James M. Cox Dayton International","National Air System""D",15
+"Myrtle Beach, SC: Myrtle Beach International","Carrier""B",15
+"Portland, OR: Portland International","Carrier""B",15
+"Savannah, GA: Savannah/Hilton Head International","National Air System""D",15
+"El Paso, TX: El Paso International","Carrier""B",14
+"Kahului, HI: Kahului Airport","Carrier""B",14
+"Milwaukee, WI: General Mitchell International","National Air System""D",14
+"Akron, OH: Akron-Canton","National Air System""D",13
+"Madison, WI: Dane County Regional","National Air System""D",13
+"Salt Lake City, UT: Salt Lake City International","Carrier""B",13
+"San Antonio, TX: San Antonio International","Carrier""B",13
+"Charlottesville, VA: Charlottesville-Albemarle","National Air System""D",12
+"Fayetteville, AR: Northwest Arkansas Regional","National Air System""D",12
+"Grand Rapids, MI: Gerald R. Ford International","National Air System""D",12
+"Huntsville, AL: Huntsville International","Carrier""B",12
+"Lubbock, TX: Lubbock Preston Smith International","Carrier""B",12
+"Midland, TX: Midland International","Carrier""B",12
+"Ontario, CA: Ontario International","Carrier""B",12
+"Syracuse, NY: Syracuse Hancock International","National Air System""D",11
+"Fort Myers, FL: Southwest Florida International","Carrier""B",10
+"Anchorage, AK: Ted Stevens Anchorage International","Carrier""B",9
+"Hartford, CT: Bradley International","National Air System""D",9
+"Hartford, CT: Bradley International","Carrier""B",9
+"Jackson, MS: Jackson-Medgar Wiley Evers International","Carrier""B",9
+"Oklahoma City, OK: Will Rogers World","Carrier""B",9
+"Pensacola, FL: Pensacola International","National Air System""D",9
+"Tucson, AZ: Tucson International","Carrier""B",9
+"White Plains, NY: Westchester County","National Air System""D",9
+"Albuquerque, NM: Albuquerque International Sunport","Carrier""B",8
+"Amarillo, TX: Rick Husband Amarillo International","Carrier""B",8
+"Des Moines, IA: Des Moines International","National Air System""D",8
+"Lihue, HI: Lihue Airport","Carrier""B",8
+"Reno, NV: Reno/Tahoe International","Carrier""B",8
+"Bangor, ME: Bangor International","National Air System""D",7
+"Lexington, KY: Blue Grass","Carrier""B",7
+"Manchester, NH: Manchester-Boston Regional","Carrier""B",7
+"Monterey, CA: Monterey Regional","Carrier""B",7
+"Omaha, NE: Eppley Airfield","Carrier""B",7
+"Omaha, NE: Eppley Airfield","National Air System""D",7
+"Tallahassee, FL: Tallahassee International","National Air System""D",7
+"Traverse City, MI: Cherry Capital","National Air System""D",7
+"Tulsa, OK: Tulsa International","National Air System""D",7
+"Wichita, KS: Wichita Dwight D. Eisenhower National","National Air System""D",7
+"Asheville, NC: Asheville Regional","Carrier""B",6
+"Asheville, NC: Asheville Regional","National Air System""D",6
+"Cedar Rapids, IA: Eastern Iowa","National Air System""D",6
+"Colorado Springs, CO: City of Colorado Springs Municipal","Carrier""B",6
+"Durango, CO: Durango-La Plata County","Carrier""B",6
+"Evansville, IN: Evansville Regional","National Air System""D",6
+"Green Bay, WI: Green Bay-Austin Straubel International","National Air System""D",6
+"Latrobe, PA: Arnold Palmer Regional","Carrier""B",6
+"Little Rock, AR: Bill and Hillary Clinton National","Carrier""B",6
+"McAllen, TX: McAllen Miller International","Carrier""B",6
+"Nantucket, MA: Nantucket Memorial","National Air System""D",6
+"San Juan, PR: Luis Munoz Marin International","Carrier""B",6
+"Sarasota, FL: Sarasota/Bradenton International","National Air System""D",6
+"Shreveport, LA: Shreveport Regional","National Air System""D",6
+"Trenton, NJ: Trenton-Mercer","Carrier""B",6
+"Duluth, MN: Duluth International","National Air System""D",5
+"Harrisburg, PA: Harrisburg International","National Air System""D",5
+"Juneau, AK: Juneau International","Carrier""B",5
+"Key West, FL: Key West International","National Air System""D",5
+"Kona, HI: Ellison Onizuka Kona International","Carrier""B",5
+"Mobile, AL: Mobile Regional","Carrier""B",5
+"Montrose, CO: Montrose Regional","Carrier""B",5
+"Springfield, MO: Springfield-Branson National","National Air System""D",5
+"Valparaiso, FL: Destin-Fort Walton Beach","Carrier""B",5
+"West Palm Beach, FL: Palm Beach International","Carrier""B",5
+"Albany, NY: Albany International","Carrier""B",4
+"Albany, NY: Albany International","National Air System""D",4
+"Bakersfield, CA: Meadows Field","Carrier""B",4
+"Champaign, IL: University of Illinois-Willard","National Air System""D",4
+"Chattanooga, TN: Lovell Field","National Air System""D",4
+"Columbia, SC: Columbia Metropolitan","Carrier""B",4
+"Corpus Christi, TX: Corpus Christi International","Carrier""B",4
+"Flint, MI: Bishop International","Carrier""B",4
+"Fort Smith, AR: Fort Smith Regional","Carrier""B",4
+"Gainesville, FL: Gainesville Regional","National Air System""D",4
+"Gulfport, MS: Gulfport-Biloxi International","Carrier""B",4
+"Killeen, TX: Killeen-Fort Hood Regional","National Air System""D",4
+"Lafayette, LA: Lafayette Regional","Carrier""B",4
+"Lansing, MI: Capital Region International","Carrier""B",4
+"Long Beach, CA: Long Beach Airport","Carrier""B",4
+"Montgomery, AL: Montgomery Regional","Carrier""B",4
+"Peoria, IL: General Wayne A. Downing Peoria International","National Air System""D",4
+"San Angelo, TX: San Angelo Regional","National Air System""D",4
+"Sioux Falls, SD: Sioux Falls Regional","Carrier""B",4
+"Toledo, OH: Toledo Express","National Air System""D",4
+"Wilmington, NC: Wilmington International","National Air System""D",4
+"Appleton, WI: Appleton International","National Air System""D",3
+"Atlantic City, NJ: Atlantic City International","National Air System""D",3
+"Atlantic City, NJ: Atlantic City International","Carrier""B",3
+"Baton Rouge, LA: Baton Rouge Metropolitan","National Air System""D",3
+"Bismarck, ND: Bismarck Municipal","Carrier""B",3
+"Boise, ID: Boise Air Terminal","National Air System""D",3
+"Charleston, WV: Yeager","National Air System""D",3
+"Daytona Beach, FL: Daytona Beach International","National Air System""D",3
+"Fresno, CA: Fresno Yosemite International","Carrier""B",3
+"Harlingen, TX: Valley International","Carrier""B",3
+"Islip, NY: Long Island MacArthur","National Air System""D",3
+"Laredo, TX: Laredo International","National Air System""D",3
+"Lincoln, NE: Lincoln","Carrier""B",3
+"Moline, IL: Quad City International","National Air System""D",3
+"Palm Springs, CA: Palm Springs International","Carrier""B",3
+"Saginaw, MI: MBS International","National Air System""D",3
+"Sitka, AK: Sitka Rocky Gutierrez","Carrier""B",3
+"South Bend, IN: South Bend International","National Air System""D",3
+"Spokane, WA: Spokane International","National Air System""D",3
+"Vineyard Haven, MA: Martha's Vineyard","National Air System""D",3
+"Abilene, TX: Abilene Regional","National Air System""D",2
+"Aguadilla, PR: Rafael Hernandez","Carrier""B",2
+"Arcata, CA: Arcata-Eureka","National Air System""D",2
+"Bloomington, IL: Central Illinois Regional","Carrier""B",2
+"Bloomington, IL: Central Illinois Regional","National Air System""D",2
+"College Station, TX: Easterwood Field","National Air System""D",2
+"Columbia, MO: Columbia Regional","National Air System""D",2
+"Dubuque, IA: Dubuque Regional","National Air System""D",2
+"Fairbanks, AK: Fairbanks International","Carrier""B",2
+"Fayetteville, NC: Fayetteville Regional","National Air System""D",2
+"Hilton Head, SC: Hilton Head","Carrier""B",2
+"Jackson, WY: Jackson Hole","Carrier""B",2
+"Jamestown, ND: Jamestown Regional","National Air System""D",2
+"Joplin, MO: Joplin Regional","National Air System""D",2
+"Kalamazoo, MI: Kalamazoo/Battle Creek International","National Air System""D",2
+"La Crosse, WI: La Crosse Regional","National Air System""D",2
+"Manhattan, KS: Manhattan Regional","National Air System""D",2
+"Paducah, KY: Barkley Regional","National Air System""D",2
+"Panama City, FL: Northwest Florida Beaches International","Carrier""B",2
+"Ponce, PR: Mercedita","National Air System""D",2
+"Rapid City, SD: Rapid City Regional","National Air System""D",2
+"Sioux City, IA: Sioux Gateway","National Air System""D",2
+"Springfield, IL: Abraham Lincoln Capital","National Air System""D",2
+"Stillwater, OK: Stillwater Regional","National Air System""D",2
+"Texarkana, AR: Texarkana Regional","National Air System""D",2
+"Tyler, TX: Tyler Pounds Regional","National Air System""D",2
+"Waco, TX: Waco Regional","Carrier""B",2
+"Wichita Falls, TX: Sheppard AFB/Wichita Falls Municipal","National Air System""D",2
+"Worcester, MA: Worcester Regional","Carrier""B",2
+"Alexandria, LA: Alexandria International","National Air System""D",1
+"Allentown, PA: Lehigh Valley International","National Air System""D",1
+"Allentown, PA: Lehigh Valley International","Carrier""B",1
+"Aspen, CO: Aspen-Pitkin County","Carrier""B",1
+"Aspen, CO: Aspen-Pitkin County","National Air System""D",1
+"Augusta, GA: Augusta Regional","National Air System""D",1
+"Augusta, GA: Augusta Regional","Carrier""B",1
+"Beaumont, TX: Jack Brooks Regional","National Air System""D",1
+"Belleville, IL: MidAmerica St. Louis","Carrier""B",1
+"Bethel, AK: Bethel","Carrier""B",1
+"Billings, MT: Billings Logan International","National Air System""D",1
+"Bozeman, MT: Bozeman Yellowstone International","National Air System""D",1
+"Branson, MO: Branson","Carrier""B",1
+"Bristol, TN: Tri-Cities Regional","Carrier""B",1
+"Brownsville, TX: Brownsville/South Padre Island International","Carrier""B",1
+"Brownsville, TX: Brownsville/South Padre Island International","National Air System""D",1
+"Cape Girardeau, MO: Cape Girardeau Regional","National Air System""D",1
+"Cape Girardeau, MO: Cape Girardeau Regional","Carrier""B",1
+"Cheyenne, WY: Cheyenne Regional","Carrier""B",1
+"Clarksburg, WV: North Central West Virginia","National Air System""D",1
+"Cordova, AK: Merle K. Smith","Carrier""B",1
+"Del Rio, TX: Del Rio International","National Air System""D",1
+"Devils Lake, ND: Devils Lake Regional","National Air System""D",1
+"Eau Claire, WI: Chippewa Valley Regional","National Air System""D",1
+"Eugene, OR: Eugene Airport","Carrier""B",1
+"Fort Wayne, IN: Fort Wayne International","National Air System""D",1
+"Fort Wayne, IN: Fort Wayne International","Carrier""B",1
+"Grand Island, NE: Central Nebraska Regional","National Air System""D",1
+"Grand Junction, CO: Grand Junction Regional","National Air System""D",1
+"Great Falls, MT: Great Falls International","National Air System""D",1
+"Hancock, MI: Houghton County Memorial","National Air System""D",1
+"Hayden, CO: Yampa Valley","National Air System""D",1
+"Hilo, HI: Hilo International","Carrier""B",1
+"Huntington, WV: Tri-State/Milton J. Ferguson Field","Carrier""B",1
+"Idaho Falls, ID: Idaho Falls Regional","Carrier""B",1
+"Jacksonville, NC: Albert J. Ellis","Carrier""B",1
+"Kalispell, MT: Glacier Park International","Carrier""B",1
+"Kalispell, MT: Glacier Park International","National Air System""D",1
+"Kearney, NE: Kearney Regional","National Air System""D",1
+"Ketchikan, AK: Ketchikan International","Carrier""B",1
+"Lake Charles, LA: Lake Charles Regional","National Air System""D",1
+"Lawton, OK: Lawton-Fort Sill Regional","National Air System""D",1
+"Longview, TX: East Texas Regional","National Air System""D",1
+"Lynchburg, VA: Lynchburg Regional","Carrier""B",1
+"Medford, OR: Rogue Valley International","Carrier""B",1
+"Medford, OR: Rogue Valley International","National Air System""D",1
+"Melbourne, FL: Orlando Melbourne International","National Air System""D",1
+"Missoula, MT: Missoula International","National Air System""D",1
+"Moab, UT: Canyonlands Field","National Air System""D",1
+"Monroe, LA: Monroe Regional","Carrier""B",1
+"Monroe, LA: Monroe Regional","National Air System""D",1
+"Muskegon, MI: Muskegon County","National Air System""D",1
+"New Bern, NC: Coastal Carolina Regional","National Air System""D",1
+"New Bern, NC: Coastal Carolina Regional","Carrier""B",1
+"New Haven, CT: Tweed-New Haven","National Air System""D",1
+"New Haven, CT: Tweed-New Haven","Carrier""B",1
+"Newport News, VA: Newport News/Williamsburg International","Carrier""B",1
+"Newport News, VA: Newport News/Williamsburg International","National Air System""D",1
+"Petersburg, AK: Petersburg James A. Johnson","Carrier""B",1
+"Pierre, SD: Pierre Regional","National Air System""D",1
+"Pueblo, CO: Pueblo Memorial","National Air System""D",1
+"Redmond, OR: Redmond Municipal","Carrier""B",1
+"Redmond, OR: Redmond Municipal","National Air System""D",1
+"Roanoke, VA: Roanoke-Blacksburg Regional","National Air System""D",1
+"Roanoke, VA: Roanoke-Blacksburg Regional","Carrier""B",1
+"Rochester, MN: Rochester International","National Air System""D",1
+"Rock Springs, WY: Rock Springs-Sweetwater County","National Air System""D",1
+"San Luis Obispo, CA: San Luis Obispo County Regional","National Air System""D",1
+"Santa Rosa, CA: Charles M. Schulz Sonoma County","Carrier""B",1
+"Sault Ste. Marie, MI: Chippewa County International","Carrier""B",1
+"State College, PA: University Park","National Air System""D",1
+"State College, PA: University Park","Carrier""B",1
+"Staunton, VA: Shenandoah Valley Regional","National Air System""D",1
+"Staunton, VA: Shenandoah Valley Regional","Carrier""B",1
+"Vernal, UT: Vernal Regional","National Air System""D",1
+"Waterloo, IA: Waterloo Regional","National Air System""D",1
+"Wilkes-Barre, PA: Wilkes-Barre/Scranton International","National Air System""D",1
+"Wilkes-Barre, PA: Wilkes-Barre/Scranton International","Carrier""B",1
+"Wrangell, AK: Wrangell","Carrier""B",1
