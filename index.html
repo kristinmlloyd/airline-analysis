@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>website – Airline On-Time Performance Analysis</title>
+<title>A Traveler’s Guide to Flight Delays – Airline On-Time Performance Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +20,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -66,6 +100,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -107,15 +144,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#which-airlines-have-the-worst-delays" id="toc-which-airlines-have-the-worst-delays" class="nav-link" data-scroll-target="#which-airlines-have-the-worst-delays">Which Airlines Have the Worst Delays?</a></li>
+  <li><a href="#which-airlines-depart-early" id="toc-which-airlines-depart-early" class="nav-link" data-scroll-target="#which-airlines-depart-early">Which Airlines Depart Early?</a></li>
+  <li><a href="#when-should-you-fly" id="toc-when-should-you-fly" class="nav-link" data-scroll-target="#when-should-you-fly">When Should You Fly?</a></li>
+  <li><a href="#which-airport-has-the-worst-delays" id="toc-which-airport-has-the-worst-delays" class="nav-link" data-scroll-target="#which-airport-has-the-worst-delays">Which Airport Has the Worst Delays?</a></li>
+  <li><a href="#where-does-each-airline-struggle-most" id="toc-where-does-each-airline-struggle-most" class="nav-link" data-scroll-target="#where-does-each-airline-struggle-most">Where Does Each Airline Struggle Most?</a></li>
+  <li><a href="#what-about-cancellations" id="toc-what-about-cancellations" class="nav-link" data-scroll-target="#what-about-cancellations">What About Cancellations?</a></li>
+  <li><a href="#how-do-flight-volumes-change-over-time" id="toc-how-do-flight-volumes-change-over-time" class="nav-link" data-scroll-target="#how-do-flight-volumes-change-over-time">How Do Flight Volumes Change Over Time?</a></li>
+  <li><a href="#conclusion-tips-for-travelers" id="toc-conclusion-tips-for-travelers" class="nav-link" data-scroll-target="#conclusion-tips-for-travelers">Conclusion: Tips for Travelers</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">website</h1>
+<h1 class="title">A Traveler’s Guide to Flight Delays</h1>
+<p class="subtitle lead">Insights from August 2019 Flight Data</p>
 </div>
 
 
@@ -132,10 +184,211 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Flight delays are a frustrating reality of air travel. Using data from the Bureau of Transportation Statistics for August 2019, this analysis examines which airlines and airports have the worst delays when you should fly, and why flights get canceled — helping travelers make smarter booking decisions.</p>
+</section>
+<section id="which-airlines-have-the-worst-delays" class="level2">
+<h2 class="anchored" data-anchor-id="which-airlines-have-the-worst-delays">Which Airlines Have the Worst Delays?</h2>
+<p>Not all airlines are created equal when it comes to delays. Let’s look at the maximum departure delay each airline experienced.</p>
+<div id="cell-q1-max-delays" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> pd.read_csv(<span class="st">"data/question1.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q1_sorted <span class="op">=</span> q1.sort_values(<span class="st">'max_delay'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.barh(q1_sorted[<span class="st">'airline_name'</span>], q1_sorted[<span class="st">'max_delay'</span>], color<span class="op">=</span><span class="st">'seagreen'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Delay (minutes)'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Maximum Departure Delay by Airline'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q1-max-delays-output-1.png" id="q1-max-delays" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> American Airlines had the longest single delay at over 1,600 minutes (nearly 27 hours!). However, maximum delays can be outliers. Southwest Airlines had the shortest maximum delay — though still nearly 10 hours.</p>
+</section>
+<section id="which-airlines-depart-early" class="level2">
+<h2 class="anchored" data-anchor-id="which-airlines-depart-early">Which Airlines Depart Early?</h2>
+<p>Surprisingly, some flights leave before their scheduled time. Here’s how early each airline has departed.</p>
+<div id="cell-q2-early-departures" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> pd.read_csv(<span class="st">"data/question2.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q2_sorted <span class="op">=</span> q2.sort_values(<span class="st">'max_early_departure'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.barh(q2_sorted[<span class="st">'airline_name'</span>], q2_sorted[<span class="st">'max_early_departure'</span>], color<span class="op">=</span><span class="st">'seagreen'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Minutes Early (negative = early)'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Maximum Early Departure by Airline'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q2-early-departures-output-1.png" id="q2-early-departures" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> SkyWest Airlines once departed 47 minutes early — great if you’re on board, not so great if you’re still in the terminal! Notice that Southwest Airlines appears at the top here with the smallest early departure (-21 minutes), and they also had the smallest maximum delay in the previous chart. This suggests Southwest is the most consistent at sticking to their scheduled departure times.</p>
+</section>
+<section id="when-should-you-fly" class="level2">
+<h2 class="anchored" data-anchor-id="when-should-you-fly">When Should You Fly?</h2>
+<p>Some days are busier than others. More flights can mean more congestion and potential delays.</p>
+<div id="cell-q3-busiest-days" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> pd.read_csv(<span class="st">"data/question3.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(q3[<span class="st">'day_of_week'</span>], q3[<span class="st">'num_flights'</span>], color<span class="op">=</span><span class="st">'seagreen'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Flights'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Total Flights by Day of Week'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q3-busiest-days-output-1.png" id="q3-busiest-days" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> Most days have similar flight volume around 85,000-90,000 flights. However, Thursday and Friday see big spikes to over 110,000 flights — likely due to business travelers and weekend trip departures. If you want a calmer airport experience, avoid flying Thursday or Friday.</p>
+</section>
+<section id="which-airport-has-the-worst-delays" class="level2">
+<h2 class="anchored" data-anchor-id="which-airport-has-the-worst-delays">Which Airport Has the Worst Delays?</h2>
+<p>Some airports are notorious for delays. Here’s the airport with the highest average departure delay.</p>
+<div id="cell-q4-worst-airport" class="cell" data-execution_count="5">
+<div id="q4-worst-airport" class="cell-output cell-output-display" data-execution_count="180">
+
+<style>
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.bounce-number {
+  font-size: 3em;
+  font-weight: bold;
+  color: seagreen;
+  animation: bounce 1s ease infinite;
+  display: inline-block;
+}
+</style>
+
+<div style="text-align: center; margin: 30px 0;">
+  <h3 class="anchored">🚨 Worst Airport for Delays</h3>
+  <h2 class="anchored">Owensboro, KY: Owensboro-Daviess County Regional (OWB)</h2>
+  <p class="bounce-number">94.5 min</p>
+  <p>Average Departure Delay</p>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> Owensboro-Daviess County Regional Airport (OWB) in Kentucky has the highest average departure delay at 94.5 minutes. This is a small regional airport — smaller airports often have fewer resources to recover from disruptions, leading to longer average delays.</p>
+</section>
+<section id="where-does-each-airline-struggle-most" class="level2">
+<h2 class="anchored" data-anchor-id="where-does-each-airline-struggle-most">Where Does Each Airline Struggle Most?</h2>
+<p>Every airline has an airport where they perform worst. Here’s each airline’s trouble spot.</p>
+<div id="cell-q5-airline-worst-airports" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q5-airline-worst-airports-output-1.png" id="q5-airline-worst-airports" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> Allegiant Air struggles most at Ogdensburg International (NY) with a staggering 214-minute average delay. Most airlines’ worst airports are smaller regional hubs — suggesting limited resources at these locations cause bigger problems when delays occur.</p>
+<p>Most airports only appear once — meaning each airline struggles at different locations. If any airport shows up multiple times, it’s a red flag that the airport itself has systemic delay issues across carriers.</p>
+</section>
+<section id="what-about-cancellations" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-cancellations">What About Cancellations?</h2>
+<p>Delays are one thing, but cancellations can ruin your travel plans entirely.</p>
+<div id="cell-q6a-cancellations" class="cell" data-execution_count="7">
+<div id="q6a-cancellations" class="cell-output cell-output-display" data-execution_count="182">
+
+<style>
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.cancel-number {
+  font-size: 3.5em;
+  font-weight: bold;
+  color: seagreen;
+  animation: pulse 2s ease infinite;
+  display: inline-block;
+}
+</style>
+
+<div style="text-align: center; margin: 30px 0; padding: 20px; background:rgb(212, 225, 218); border-radius: 15px;">
+  <h3 class="anchored">✈️ Total Canceled Flights in August 2019</h3>
+  <p class="cancel-number">11,298</p>
+  <p>flights never took off</p>
+</div>
+</div>
+</div>
+<p>That’s a lot of cancellations! But why were they canceled?</p>
+<div id="cell-q6b-cancellation-reasons" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q6b-cancellation-reasons-output-1.png" id="q6b-cancellation-reasons" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-q6b-reasons" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q6b-reasons-output-1.png" id="q6b-reasons" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about thos</p>
+</section>
+<section id="how-do-flight-volumes-change-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-flight-volumes-change-over-time">How Do Flight Volumes Change Over Time?</h2>
+<p>Let’s look at daily flight patterns throughout August 2019.</p>
+<div id="cell-q7-flight-trends" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/q7-flight-trends-output-1.png" id="q7-flight-trends" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Insight:</strong> Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about those being the busiest days. The 3-day rolling average (red line) smooths out the daily noise and shows demand stayed consistent around 21,000-22,000 flights per day throughout August. The big dip at the end is August 31st (Saturday) heading into Labor Day weekend.</p>
+</section>
+<section id="conclusion-tips-for-travelers" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-tips-for-travelers">Conclusion: Tips for Travelers</h2>
+<p>Based on our analysis of August 2019 flight data, here’s how to minimize travel headaches:</p>
+<ol type="1">
+<li><p><strong>Choose your airline wisely</strong> — Southwest Airlines had the smallest maximum delay and sticks closest to schedule. Avoid American Airlines and Mesa Airlines for the most extreme delays.</p></li>
+<li><p><strong>Fly on Tuesday or Wednesday</strong> — Thursday and Friday are the busiest days with 25% more flights than other days.</p></li>
+<li><p><strong>Avoid small regional airports</strong> — They have the highest average delays. The worst offender: Owensboro, KY with 94-minute average delays.</p></li>
+<li><p><strong>Be cautious at Northeast hubs</strong> — LaGuardia, O’Hare, and Newark lead in cancellations, mostly due to air traffic control issues.</p></li>
+<li><p><strong>Expect weekly patterns</strong> — Saturdays have fewer flights, while Thursday/Friday peak. Plan connections accordingly.</p></li>
+</ol>
+<p>Safe travels!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -230,7 +483,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/kristinmlloyd\.github\.io\/airline-analysis\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
