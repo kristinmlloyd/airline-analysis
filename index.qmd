@@ -1,7 +1,299 @@
 ---
-title: "website"
+title: "A Traveler's Guide to Flight Delays"
+subtitle: "Insights from August 2019 Flight Data"
+format:
+  html:
+    code-fold: true
 ---
 
-This is a Quarto website.
+```{python}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+#| label: setup
+#| include: false
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set_theme(style="whitegrid")
+
+```
+
+## Introduction
+
+Flight delays are a frustrating reality of air travel. Using data from the Bureau of Transportation Statistics for August 2019, this analysis examines which airlines and airports have the worst delays when you should fly, and why flights get canceled — helping travelers make smarter booking decisions.
+
+## Which Airlines Have the Worst Delays?
+
+Not all airlines are created equal when it comes to delays. Let's look at the maximum departure delay each airline experienced.
+
+```{python}
+#| label: q1-max-delays
+
+q1 = pd.read_csv("data/question1.csv")
+q1_sorted = q1.sort_values('max_delay', ascending=True)
+
+plt.figure(figsize=(10, 6))
+plt.barh(q1_sorted['airline_name'], q1_sorted['max_delay'], color='seagreen')
+plt.xlabel('Delay (minutes)')
+plt.title('Maximum Departure Delay by Airline')
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** American Airlines had the longest single delay at over 1,600 minutes (nearly 27 hours!). However, maximum delays can be outliers. Southwest Airlines had the shortest maximum delay — though still nearly 10 hours.
+
+## Which Airlines Depart Early?
+
+Surprisingly, some flights leave before their scheduled time. Here's how early each airline has departed.
+
+```{python}
+
+#| label: q2-early-departures
+
+q2 = pd.read_csv("data/question2.csv")
+q2_sorted = q2.sort_values('max_early_departure', ascending=True)
+
+plt.figure(figsize=(10, 6))
+plt.barh(q2_sorted['airline_name'], q2_sorted['max_early_departure'], color='seagreen')
+plt.xlabel('Minutes Early (negative = early)')
+plt.title('Maximum Early Departure by Airline')
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** SkyWest Airlines once departed 47 minutes early — great if you're on board, not so great if you're still in the terminal! Notice that Southwest Airlines appears at the top here with the smallest early departure (-21 minutes), and they also had the smallest maximum delay in the previous chart. This suggests Southwest is the most consistent at sticking to their scheduled departure times.
+
+## When Should You Fly?
+
+Some days are busier than others. More flights can mean more congestion and potential delays.
+
+```{python}
+
+#| label: q3-busiest-days
+
+q3 = pd.read_csv("data/question3.csv")
+
+plt.figure(figsize=(10, 5))
+bars = plt.bar(q3['day_of_week'], q3['num_flights'], color='seagreen')
+plt.ylabel('Number of Flights')
+plt.title('Total Flights by Day of Week')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** Most days have similar flight volume around 85,000-90,000 flights. However, Thursday and Friday see big spikes to over 110,000 flights — likely due to business travelers and weekend trip departures. If you want a calmer airport experience, avoid flying Thursday or Friday.
+
+## Which Airport Has the Worst Delays?
+
+Some airports are notorious for delays. Here's the airport with the highest average departure delay.
+
+```{python}
+#| label: q4-worst-airport
+#| echo: false
+
+from IPython.display import HTML
+
+q4 = pd.read_csv("data/question4.csv")
+
+airport = q4['airport_name'].values[0]
+code = q4['airport_code'].values[0]
+delay = q4['avg_delay'].values[0]
+
+HTML(f"""
+<style>
+@keyframes bounce {{
+  0%, 100% {{ transform: translateY(0); }}
+  50% {{ transform: translateY(-20px); }}
+}}
+
+.bounce-number {{
+  font-size: 3em;
+  font-weight: bold;
+  color: seagreen;
+  animation: bounce 1s ease infinite;
+  display: inline-block;
+}}
+</style>
+
+<div style="text-align: center; margin: 30px 0;">
+  <h3>🚨 Worst Airport for Delays</h3>
+  <h2>{airport} ({code})</h2>
+  <p class="bounce-number">{delay:.1f} min</p>
+  <p>Average Departure Delay</p>
+</div>
+""")
+```
+
+**Key Insight:** Owensboro-Daviess County Regional Airport (OWB) in Kentucky has the highest average departure delay at 94.5 minutes. This is a small regional airport — smaller airports often have fewer resources to recover from disruptions, leading to longer average delays.
+
+## Where Does Each Airline Struggle Most?
+
+Every airline has an airport where they perform worst. Here's each airline's trouble spot.
+
+```{python}
+#| label: q5-airline-worst-airports
+#| echo: false
+
+q5 = pd.read_csv("data/question5.csv")
+q5_sorted = q5.sort_values('avg_delay', ascending=False)
+
+plt.figure(figsize=(12, 8))
+
+# Draw lines (the "sticks")
+plt.hlines(y=q5_sorted['airline_name'], xmin=0, xmax=q5_sorted['avg_delay'], color='seagreen', alpha=0.6, linewidth=2)
+
+# Draw dots (the "lollipops")
+plt.scatter(q5_sorted['avg_delay'], q5_sorted['airline_name'], color='seagreen', s=100, zorder=3)
+
+# Add airport labels next to dots
+for i, row in q5_sorted.iterrows():
+    # Get short airport name (city only)
+    short_name = row['airport_name'].split(',')[0]
+    plt.text(row['avg_delay'] + 3, row['airline_name'], short_name, va='center', fontsize=8)
+
+plt.xlabel('Average Delay (minutes)')
+plt.title('Worst Airport for Each Airline')
+plt.xlim(0, max(q5_sorted['avg_delay']) + 60)
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** Allegiant Air struggles most at Ogdensburg International (NY) with a staggering 214-minute average delay. Most airlines' worst airports are smaller regional hubs — suggesting limited resources at these locations cause bigger problems when delays occur.
+
+Most airports only appear once — meaning each airline struggles at different locations. If any airport shows up multiple times, it's a red flag that the airport itself has systemic delay issues across carriers.
+
+## What About Cancellations?
+
+Delays are one thing, but cancellations can ruin your travel plans entirely.
+
+```{python}
+
+#| label: q6a-cancellations
+#| echo: false
+
+from IPython.display import HTML
+
+q6a = pd.read_csv("data/question6a.csv")
+canceled = q6a['canceled_flights'].values[0]
+
+HTML(f"""
+<style>
+@keyframes pulse {{
+  0%, 100% {{ transform: scale(1); }}
+  50% {{ transform: scale(1.1); }}
+}}
+
+.cancel-number {{
+  font-size: 3.5em;
+  font-weight: bold;
+  color: seagreen;
+  animation: pulse 2s ease infinite;
+  display: inline-block;
+}}
+</style>
+
+<div style="text-align: center; margin: 30px 0; padding: 20px; background:rgb(212, 225, 218); border-radius: 15px;">
+  <h3>✈️ Total Canceled Flights in August 2019</h3>
+  <p class="cancel-number">{canceled:,}</p>
+  <p>flights never took off</p>
+</div>
+""")
+
+```
+
+That's a lot of cancellations! But why were they canceled?
+
+```{python}
+
+#| label: q6b-cancellation-reasons
+#| echo: false
+
+q6b = pd.read_csv("data/question6b.csv")
+q6b_top = q6b.head(10)
+
+plt.figure(figsize=(10, 6))
+plt.barh(q6b_top['airport_name'].str.split(',').str[0], q6b_top['num_cancellations'], color='seagreen')
+plt.xlabel('Number of Cancellations')
+plt.title('Top 10 Airports by Cancellations')
+plt.tight_layout()
+plt.show()
+
+```
+
+```{python}
+
+#| label: q6b-reasons
+#| echo: false
+
+q6b = pd.read_csv("data/question6b.csv")
+
+# Extract just the reason (remove the code)
+q6b['reason_clean'] = q6b['cancellation_reason'].str.extract(r'([A-Za-z ]+)')
+
+# Count by reason
+reason_counts = q6b.groupby('reason_clean')['num_cancellations'].sum().sort_values(ascending=False)
+
+plt.figure(figsize=(8, 5))
+plt.pie(reason_counts, labels=reason_counts.index, autopct='%1.1f%%', colors=['seagreen', '#1dbc60', '#2ecc71', '#f39c12'])
+plt.title('Cancellation Reasons Breakdown')
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about thos
+
+## How Do Flight Volumes Change Over Time?
+
+Let's look at daily flight patterns throughout August 2019.
+
+```{python}
+
+#| label: q7-flight-trends
+#| echo: false
+
+q7 = pd.read_csv("data/question7.csv")
+q7['FlightDate'] = pd.to_datetime(q7['FlightDate'])
+
+plt.figure(figsize=(12, 5))
+
+# Area chart for daily flights
+plt.fill_between(q7['FlightDate'], q7['flights_today'], alpha=0.3, color='steelblue', label='Daily Flights')
+plt.plot(q7['FlightDate'], q7['flights_today'], color='steelblue', linewidth=0.5)
+
+# Bold line for rolling average
+plt.plot(q7['FlightDate'], q7['avg_prev_3_days'], color='#e74c3c', linewidth=2.5, label='3-Day Rolling Average')
+
+plt.xlabel('Date')
+plt.ylabel('Number of Flights')
+plt.title('Daily Flights vs 3-Day Rolling Average (August 2019)')
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+```
+
+**Key Insight:** Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about those being the busiest days. The 3-day rolling average (red line) smooths out the daily noise and shows demand stayed consistent around 21,000-22,000 flights per day throughout August. The big dip at the end is August 31st (Saturday) heading into Labor Day weekend.
+
+## Conclusion: Tips for Travelers
+
+Based on our analysis of August 2019 flight data, here's how to minimize travel headaches:
+
+1. **Choose your airline wisely** — Southwest Airlines had the smallest maximum delay and sticks closest to schedule. Avoid American Airlines and Mesa Airlines for the most extreme delays.
+
+2. **Fly on Tuesday or Wednesday** — Thursday and Friday are the busiest days with 25% more flights than other days.
+
+3. **Avoid small regional airports** — They have the highest average delays. The worst offender: Owensboro, KY with 94-minute average delays.
+
+4. **Be cautious at Northeast hubs** — LaGuardia, O'Hare, and Newark lead in cancellations, mostly due to air traffic control issues.
+
+5. **Expect weekly patterns** — Saturdays have fewer flights, while Thursday/Friday peak. Plan connections accordingly.
+
+Safe travels! 

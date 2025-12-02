@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "",
+    "text": "Flight delays are a frustrating reality of air travel. Using data from the Bureau of Transportation Statistics for August 2019, this analysis examines which airlines and airports have the worst delays when you should fly, and why flights get canceled — helping travelers make smarter booking decisions."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "",
+    "text": "Flight delays are a frustrating reality of air travel. Using data from the Bureau of Transportation Statistics for August 2019, this analysis examines which airlines and airports have the worst delays when you should fly, and why flights get canceled — helping travelers make smarter booking decisions."
+  },
+  {
+    "objectID": "index.html#which-airlines-have-the-worst-delays",
+    "href": "index.html#which-airlines-have-the-worst-delays",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "Which Airlines Have the Worst Delays?",
+    "text": "Which Airlines Have the Worst Delays?\nNot all airlines are created equal when it comes to delays. Let’s look at the maximum departure delay each airline experienced.\n\n\nCode\nq1 = pd.read_csv(\"data/question1.csv\")\nq1_sorted = q1.sort_values('max_delay', ascending=True)\n\nplt.figure(figsize=(10, 6))\nplt.barh(q1_sorted['airline_name'], q1_sorted['max_delay'], color='seagreen')\nplt.xlabel('Delay (minutes)')\nplt.title('Maximum Departure Delay by Airline')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nKey Insight: American Airlines had the longest single delay at over 1,600 minutes (nearly 27 hours!). However, maximum delays can be outliers. Southwest Airlines had the shortest maximum delay — though still nearly 10 hours."
+  },
+  {
+    "objectID": "index.html#which-airlines-depart-early",
+    "href": "index.html#which-airlines-depart-early",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "Which Airlines Depart Early?",
+    "text": "Which Airlines Depart Early?\nSurprisingly, some flights leave before their scheduled time. Here’s how early each airline has departed.\n\n\nCode\nq2 = pd.read_csv(\"data/question2.csv\")\nq2_sorted = q2.sort_values('max_early_departure', ascending=True)\n\nplt.figure(figsize=(10, 6))\nplt.barh(q2_sorted['airline_name'], q2_sorted['max_early_departure'], color='seagreen')\nplt.xlabel('Minutes Early (negative = early)')\nplt.title('Maximum Early Departure by Airline')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nKey Insight: SkyWest Airlines once departed 47 minutes early — great if you’re on board, not so great if you’re still in the terminal! Notice that Southwest Airlines appears at the top here with the smallest early departure (-21 minutes), and they also had the smallest maximum delay in the previous chart. This suggests Southwest is the most consistent at sticking to their scheduled departure times."
+  },
+  {
+    "objectID": "index.html#when-should-you-fly",
+    "href": "index.html#when-should-you-fly",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "When Should You Fly?",
+    "text": "When Should You Fly?\nSome days are busier than others. More flights can mean more congestion and potential delays.\n\n\nCode\nq3 = pd.read_csv(\"data/question3.csv\")\n\nplt.figure(figsize=(10, 5))\nbars = plt.bar(q3['day_of_week'], q3['num_flights'], color='seagreen')\nplt.ylabel('Number of Flights')\nplt.title('Total Flights by Day of Week')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\nKey Insight: Most days have similar flight volume around 85,000-90,000 flights. However, Thursday and Friday see big spikes to over 110,000 flights — likely due to business travelers and weekend trip departures. If you want a calmer airport experience, avoid flying Thursday or Friday."
+  },
+  {
+    "objectID": "index.html#which-airport-has-the-worst-delays",
+    "href": "index.html#which-airport-has-the-worst-delays",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "Which Airport Has the Worst Delays?",
+    "text": "Which Airport Has the Worst Delays?\nSome airports are notorious for delays. Here’s the airport with the highest average departure delay.\n\n\n\n\n\n\n  🚨 Worst Airport for Delays\n  Owensboro, KY: Owensboro-Daviess County Regional (OWB)\n  94.5 min\n  Average Departure Delay\n\n\n\nKey Insight: Owensboro-Daviess County Regional Airport (OWB) in Kentucky has the highest average departure delay at 94.5 minutes. This is a small regional airport — smaller airports often have fewer resources to recover from disruptions, leading to longer average delays."
+  },
+  {
+    "objectID": "index.html#where-does-each-airline-struggle-most",
+    "href": "index.html#where-does-each-airline-struggle-most",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "Where Does Each Airline Struggle Most?",
+    "text": "Where Does Each Airline Struggle Most?\nEvery airline has an airport where they perform worst. Here’s each airline’s trouble spot.\n\n\n\n\n\n\n\n\n\nKey Insight: Allegiant Air struggles most at Ogdensburg International (NY) with a staggering 214-minute average delay. Most airlines’ worst airports are smaller regional hubs — suggesting limited resources at these locations cause bigger problems when delays occur.\nMost airports only appear once — meaning each airline struggles at different locations. If any airport shows up multiple times, it’s a red flag that the airport itself has systemic delay issues across carriers."
+  },
+  {
+    "objectID": "index.html#what-about-cancellations",
+    "href": "index.html#what-about-cancellations",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "What About Cancellations?",
+    "text": "What About Cancellations?\nDelays are one thing, but cancellations can ruin your travel plans entirely.\n\n\n\n\n\n\n  ✈️ Total Canceled Flights in August 2019\n  11,298\n  flights never took off\n\n\n\nThat’s a lot of cancellations! But why were they canceled?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKey Insight: Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about thos"
+  },
+  {
+    "objectID": "index.html#how-do-flight-volumes-change-over-time",
+    "href": "index.html#how-do-flight-volumes-change-over-time",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "How Do Flight Volumes Change Over Time?",
+    "text": "How Do Flight Volumes Change Over Time?\nLet’s look at daily flight patterns throughout August 2019.\n\n\n\n\n\n\n\n\n\nKey Insight: Flight volume follows a clear weekly cycle — you can see the dips every Saturday when fewer people fly. The peaks hit Thursday/Friday, matching what we saw earlier about those being the busiest days. The 3-day rolling average (red line) smooths out the daily noise and shows demand stayed consistent around 21,000-22,000 flights per day throughout August. The big dip at the end is August 31st (Saturday) heading into Labor Day weekend."
+  },
+  {
+    "objectID": "index.html#conclusion-tips-for-travelers",
+    "href": "index.html#conclusion-tips-for-travelers",
+    "title": "A Traveler’s Guide to Flight Delays",
+    "section": "Conclusion: Tips for Travelers",
+    "text": "Conclusion: Tips for Travelers\nBased on our analysis of August 2019 flight data, here’s how to minimize travel headaches:\n\nChoose your airline wisely — Southwest Airlines had the smallest maximum delay and sticks closest to schedule. Avoid American Airlines and Mesa Airlines for the most extreme delays.\nFly on Tuesday or Wednesday — Thursday and Friday are the busiest days with 25% more flights than other days.\nAvoid small regional airports — They have the highest average delays. The worst offender: Owensboro, KY with 94-minute average delays.\nBe cautious at Northeast hubs — LaGuardia, O’Hare, and Newark lead in cancellations, mostly due to air traffic control issues.\nExpect weekly patterns — Saturdays have fewer flights, while Thursday/Friday peak. Plan connections accordingly.\n\nSafe travels!"
+  }
+]
